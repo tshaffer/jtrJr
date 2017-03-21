@@ -1,5 +1,7 @@
+Library "utils.brs"
 Library "recordingEngine.brs"
 Library "eventHandler.brs"
+Library "displayEngine.brs"
 
 
 Sub Main()
@@ -20,8 +22,10 @@ Sub RunJtrJr()
 
 	JtrJr.eventHandler = newEventHandler(JtrJr)
 	JtrJr.recordingEngine = newRecordingEngine(JtrJr)
+	JtrJr.displayEngine = newDisplayEngine(JtrJr)
 
 	JtrJr.eventHandler.AddEngine(JtrJr.recordingEngine)
+	JtrJr.eventHandler.AddEngine(JtrJr.displayEngine)
 
 	JtrJr.controlPort = CreateObject("roControlPort", "BrightSign")
     JtrJr.controlPort.SetPort(msgPort)
@@ -30,6 +34,7 @@ Sub RunJtrJr()
 	JtrJr.SetRecordLED(false)
 
 	JtrJr.recordingEngine.Initialize()
+	JtrJr.displayEngine.Initialize()
 
 	JtrJr.eventHandler.EventLoop()
 

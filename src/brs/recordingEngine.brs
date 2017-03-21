@@ -32,7 +32,13 @@ Sub re_EventHandler(event As Object)
 
     if type(event) = "roControlDown" then
         print "roControlDown event received: ";event
-        'm.EndManualRecord()
+
+        if event.GetInt() = 0 then
+            m.StartManualRecord("recording1", 10)
+        else if event.GetInt() = 1 then
+            m.EndManualRecord()
+        endif
+
     endif
 
 End Sub
@@ -63,7 +69,7 @@ Sub re_StartManualRecord(fileName$ As String, recordingBitRate% As Integer)
 End Sub
 
 
-Sub re_EndManualRecord(duration As String, startSegmentation)
+Sub re_EndManualRecord()
 
 	ok = m.encodingMediaStreamer.Stop()
 	if not ok then stop
