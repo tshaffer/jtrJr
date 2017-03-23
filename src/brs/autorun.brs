@@ -31,6 +31,12 @@ Sub RunJtrJr()
     JtrJr.controlPort.SetPort(msgPort)
 	JtrJr.controlPortIdentity = stri(JtrJr.controlPort.GetIdentity())
 
+    config = {}
+    config.source = "IR-in"
+    config.encodings = ["NEC"]
+    JtrJr.irReceiver = CreateObject("roIRReceiver", config)
+    JtrJr.irReceiver.SetPort(msgPort)
+
 	JtrJr.SetRecordLED(false)
 
 	JtrJr.recordingEngine.Initialize()
