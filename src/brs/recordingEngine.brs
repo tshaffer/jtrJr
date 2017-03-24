@@ -34,8 +34,17 @@ Sub re_EventHandler(event As Object)
         print "roControlDown event received: ";event
 
         if event.GetInt() = 0 then
-            m.StartManualRecord("recording1", 10)
+            m.StartManualRecord("recording", 10)
         else if event.GetInt() = 1 then
+            m.EndManualRecord()
+        endif
+
+    else if type(event) = "roIRDownEvent" then
+
+        print "roIRDownEvent data = ";event
+        if event = 7311383 then       ' HOME '
+            m.StartManualRecord("recording", 10)
+        else if event = 7311380 then  ' ENTER '
             m.EndManualRecord()
         endif
 

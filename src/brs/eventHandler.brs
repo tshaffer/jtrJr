@@ -22,6 +22,13 @@ Sub eventHandler_AddEngine( engine As Object )
 End Sub
 
 
+' Roku Soundbridge remote codes
+' 7311383       HOME
+' 7311380       ENTER
+' 7311385       PLAY
+' 7311388       PAUSE
+' 7311386       NEXT TRACK
+
 Sub eventHandler_EventLoop()
 
     while true
@@ -44,9 +51,9 @@ Sub eventHandler_EventLoop()
 				print "remote data = ";msg.getint()
 			endif
 
-			if type(msg) = "roIRDownEvent" then
-				print "roIRDownEvent data = ";msg
-			endif
+			' if type(msg) = "roIRDownEvent" then
+			'' 	print "roIRDownEvent data = ";msg
+			' endif
 
 			if type(msg) = "roIRRepeatEvent" then
 				print "roIRRepeatEvent data = ";msg

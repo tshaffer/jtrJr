@@ -42,6 +42,17 @@ Sub de_EventHandler(event As Object)
             m.ResumePlayFromPaused()
         endif
 
+    else if type(event) = "roIRDownEvent" then
+
+        print "roIRDownEvent data = ";event
+        if event = 7311385 then       ' PLAY'
+            m.StartPlayback()
+        else if event = 7311388 then  ' PAUSE'
+            m.PausePlayback()
+        else if event = 7311386 then ' NEXT TRACK'
+            m.ResumePlayFromPaused()
+        endif
+
     endif
 
 
